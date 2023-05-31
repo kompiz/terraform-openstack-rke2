@@ -25,7 +25,7 @@ resource "null_resource" "check_ssh" {
 
   provisioner "local-exec" {
     command = <<-EOF
-      until nc -zv ${var.assign_floating_ip ? module.server.floating_ip[0] : module.server.internal_ip[0]} 22; do
+      until ${local.ssh} ${var.system_user}@${var.assign_floating_ip ? module.server.floating_ip[0] : module.server.internal_ip[0]} date; do
         echo "Waiting for SSH..."
         sleep 5
       done
