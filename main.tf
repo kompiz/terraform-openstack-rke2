@@ -25,7 +25,7 @@ locals {
   }
   tmpdir      = "${path.root}/.terraform/tmp/rke2"
   ssh_key_arg = var.use_ssh_agent ? "" : "-i ${var.ssh_key_file}"
-  ssh         = "ssh -tt -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${local.ssh_key_arg}"
+  ssh         = "ssh -tt -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${local.ssh_key_arg} "
   scp         = "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${local.ssh_key_arg}"
   # If assign_floating_ip is true, the provisioner will try to connect to the floating_ip of the module.server resource to get the rendered rke2-remote.yaml
   # If assign_floating_ip is false, the provisioner will try to connect to the internal_ip of the first module.server resource to get the rendered rke2-remote.yaml
