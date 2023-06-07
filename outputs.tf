@@ -31,6 +31,6 @@ output "kubernetes_config" {
     client_key             = module.client_key[0].stdout
     cluster_ca_certificate = module.cluster_ca_certificate[0].stdout
   } : {}
-  sensitive   = true
+#  sensitive   = true
   description = "Kubernetes config to feed Kubernetes or Helm provider"
 }
